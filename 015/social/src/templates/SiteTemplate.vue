@@ -23,6 +23,13 @@
               <slot name="menuesquerdo" />
             </card-menu-vue>
 
+            <card-menu-vue>
+              <h4>Amigos</h4>
+              <ul>
+                <li>Robson</li>
+              </ul>
+            </card-menu-vue>
+
           </grid-vue>
 
         <grid-vue tamanho="8">

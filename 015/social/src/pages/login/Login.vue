@@ -44,11 +44,11 @@ export default {
             alert('Login efetuado')
             sessionStorage.setItem('usuario', JSON.stringify(response.data))
             this.$router.push('/');
-          }else if(response.data.status != true){
+          }else if(response.data.status == false){
             console.log('Login não existe');
             alert('Login inválido! senha ou email incorreto')
           }else{
-            console.log('Erro de validação');
+            alert('Erro de validação');
           }
         })
 
