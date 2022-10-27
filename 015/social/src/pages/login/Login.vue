@@ -43,7 +43,7 @@ export default {
             console.log('Login com sucesso');
             alert('Login efetuado')
             sessionStorage.setItem('usuario', JSON.stringify(response.data))
-            location.href="/login"
+            this.$router.push('/');
           }else if(response.data.status != true){
             console.log('Login não existe');
             alert('Login inválido! senha ou email incorreto')

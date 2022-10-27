@@ -4,13 +4,11 @@
 
     <span slot="menuesquerdo">
           <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="https://avatars.githubusercontent.com/u/102707728?v=4" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            <div class="col s4">
+              <img :src="usuario.imagem" alt="" style="width:50px; margin-right: 20px;"  class="circle"> <!-- notice the "circle" class -->
             </div>
-            <div class="col s10">
-              <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              </span>
+            <div class="col s8">
+              <h5>{{usuario.name}}</h5>
             </div>
           </div>
     </span>
@@ -18,7 +16,7 @@
       <span slot="principal">
         <div>
           <publicar-conteudo-vue/>
-          <card-conteudo-vue perfil="https://avatars.githubusercontent.com/u/102707728?v=4" nome="Eric SM"
+          <card-conteudo-vue :perfil="usuario.imagem" :nome="usuario.name"
               data="08/10/22 01:15">
               <card-detalhes-vue title="Meu post" txt="Meu post dinâmico com vue js"
                 img="https://images.ecycle.com.br/wp-content/uploads/2021/05/20195924/o-que-e-paisagem.jpg">
@@ -41,8 +39,13 @@ export default {
   name: 'Home',
   data() {
     return {
-
+      usuario: null,
     }
+  },
+  created(){
+    var usuarioAux = sessionStorage.getItem('usuario');
+    var usuario = JSON.parse(usuarioAux);
+    this.usuario = usuario;
   },
   components: {
     SiteTemplate,
