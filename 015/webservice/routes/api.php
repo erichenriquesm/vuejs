@@ -1,10 +1,10 @@
 <?php
 
 use App\Models\User;
+use App\Models\Conteudo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rule;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -167,4 +167,40 @@ Route::middleware('auth:sanctum')->put('/perfil', function (Request $request) {
     $user->token = $user->createToken($user->email)->plainTextToken;
     return $user;
 
+});
+
+Route::get('/testes', function () {
+    $user = User::find(12);
+    $user2 = User::find(22);
+    // $user->conteudos()->create([
+    //     'titulo' => 'Conteudo3',
+    //     'texto' => "Aqui o texto",
+    //     'imagem' => 'url da imagem',
+    //     'link' => 'link',
+    //     'data' => '2022-05-10'
+    // ]);
+
+    // return $user->conteudos;
+    // $user->amigos()->attach($user2->id);
+    //$user->amigos()->detach($user2->id);
+    // $user->amigos()->toggle($user2->id);
+    // return $user->amigos;
+
+    $conteudo = Conteudo::find(1);
+    // $user->curtidas()->toggle($conteudo->id);
+    // return $conteudo->curtidas;
+
+    $user->comentarios()->create([
+        'conteudo_id' => $conteudo->id,
+        'texto' => "Aqui o texto",
+        'data' => date('Y-m-d'),
+    ]);
+
+    $user2->comentarios()->create([
+        'conteudo_id' => $conteudo->id,
+        'texto' => "OHHHH",
+        'data' => date('Y-m-d'),
+    ]);
+
+    return $conteudo->comentarios;
 });

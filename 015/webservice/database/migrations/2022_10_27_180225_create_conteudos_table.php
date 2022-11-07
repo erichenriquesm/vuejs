@@ -21,7 +21,7 @@ return new class extends Migration
             $table->longText('texto');
             $table->string('imagem');
             $table->string('link');
-            $table->dateTime('link');
+            $table->dateTime('data');
             $table->timestamps();
         });
     }

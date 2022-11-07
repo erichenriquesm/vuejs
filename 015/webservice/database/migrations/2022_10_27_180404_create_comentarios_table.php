@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('conteudo_id');
             $table->foreign('conteudo_id')->references('id')->on('conteudos')->onDelete('cascade');
+            $table->longText('texto');
+            $table->dateTime('data');
             $table->timestamps();
         });
     }
